@@ -7,19 +7,19 @@
                 <div class="form form_border">
                     <form @submit.prevent>
                         <div class="form-box">
-                            <input v-model="form.first_name" id="first_name" class="form__input" placeholder=" " autocomplete="none">
+                            <input v-model="form.first_name" id="first_name" class="form__input" placeholder=" " autocomplete="none" required>
                             <label for="first_name" class="form__label">First Name</label>
                         </div>
                         <div class="form-box">
-                            <input v-model="form.last_name" id="last_name" class="form__input" placeholder=" ">
+                            <input v-model="form.last_name" id="last_name" class="form__input" placeholder=" " required>
                             <label for="last_name" class="form__label">Last Name</label>
                         </div>
                         <div class="form-box">
-                        <input v-model="form.email" id="email" class="form__input" placeholder=" ">
+                        <input v-model="form.email" id="email" class="form__input" placeholder=" " required>
                         <label for="email" class="form__label">E-mail</label>
                         </div>
                         <div class="form-box">
-                            <input v-model="form.message" id="message" row="4" class="form__input" placeholder=" ">
+                            <input v-model="form.message" id="message" row="4" class="form__input" placeholder=" " required>
                             <label for="message" class="form__label">Message</label>
                         </div>
                         <button class="button">Submit</button>
@@ -171,10 +171,10 @@ export default {
         background: none;
 
         &:hover{
-            border-color: #0a53be;
+            border-color: #BF40BF;
         }
         &:focus{
-            border-color: red;
+            border-color: #9F2B68;
         }
     }
     &__label{
@@ -182,21 +182,21 @@ export default {
         top: -3rem;
         left: -6rem;
         padding: 0 0.5rem;
-        color: #FFFFFF;
+        color: #800080;
         cursor: text;
         font-family: inherit;
         transition: top 200ms ease-in,
             left 200ms ease-in,
             font-size 200ms ease-in;
-        background-color: purple;
+        background-color: #ffffff;
     }
     button{
         color: #FFFFFF;
         border-radius: 50px;
-        background-color: purple;
+        background-color: #800080
     }
     button:hover{
-
+        background-color: #BF40BF
     }
 }
 .form-box .form__input:focus ~ .form__label,
