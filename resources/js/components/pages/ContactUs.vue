@@ -9,20 +9,25 @@
                         <div class="form-box">
                             <input v-model="form.first_name" id="first_name" class="form__input" placeholder=" " autocomplete="none" required>
                             <label for="first_name" class="form__label">First Name</label>
+                            <div class="alert-danger" v-if="form.errors.first_name"><ul><li v-for="error in form.errors.first_name">{{ error }}</li></ul></div>
                         </div>
                         <div class="form-box">
                             <input v-model="form.last_name" id="last_name" class="form__input" placeholder=" " required>
                             <label for="last_name" class="form__label">Last Name</label>
+                            <div class="alert-danger" v-if="form.errors.last_name"><li v-for="error in form.errors.last_name">{{ error }}</li></div>
                         </div>
                         <div class="form-box">
                         <input v-model="form.email" id="email" class="form__input" placeholder=" " required>
                         <label for="email" class="form__label">E-mail</label>
+                            <div class="alert-danger" v-if="form.errors.email"><ul><li v-for="error in form.errors.email">{{ error }}</li></ul></div>
                         </div>
                         <div class="form-box">
                             <input v-model="form.message" id="message" row="4" class="form__input" placeholder=" " required>
                             <label for="message" class="form__label">Message</label>
+                            <div class="alert-danger" v-if="form.errors.message"><ul><li v-for="error in form.errors.message">{{ error }}</li></ul></div>
                         </div>
-                        <button @click="contact" class="button">Submit</button>
+                        <button @click="contact" :disabled="form.first_name === '' || form.last_name === '' || form.email === '' || form.message === ''" class="button">Submit</button>
+                        <div class="alert-success" v-if="success">{{ success }}</div>
                     </form>
                 </div>
                 <div class="email-box">
@@ -68,15 +73,19 @@ export default {
         }
     },
     methods: {
-        contact(){
+        contact() {
             this.success = '';
             this.form.errors = [];
             axios.post('/contact-us', this.form)
-            .then((response) => {
-                if(response.data.success){
-                    this.success = response.data.success;
-                }
-            }).catch(error => {
+                .then((response) => {
+                    if (response.data.success) {
+                        this.form.first_name = '';
+                        this.form.last_name = '';
+                        this.form.email = '';
+                        this.form.message = '';
+                        this.success = response.data.success;
+                    }
+                }).catch(error => {
                 if (error.response.data.errors) {
                     this.form.errors = error.response.data.errors;
                 }
