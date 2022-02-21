@@ -22,7 +22,7 @@
                             <input v-model="form.message" id="message" row="4" class="form__input" placeholder=" " required>
                             <label for="message" class="form__label">Message</label>
                         </div>
-                        <button class="button">Submit</button>
+                        <button @click="contact" class="button">Submit</button>
                     </form>
                 </div>
                 <div class="email-box">
