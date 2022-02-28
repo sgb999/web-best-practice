@@ -12,10 +12,8 @@ use App\Http\Controllers\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::controller(IndexController::class)->group(function(){
-    Route::get('/', 'home');
-    Route::get('/about', 'about');
-    Route::get('/contact-us', 'contactUs');
-    Route::post('/contact-us', 'contactForm');
-});
+Route::inertia('/', 'Home');
+Route::inertia('/about', 'About');
+Route::inertia('/contact-us', 'ContactUs');
+//Route::post('/contact-us', 'contactForm');
 
