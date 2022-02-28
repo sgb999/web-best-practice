@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,5 +15,5 @@ use App\Http\Controllers\IndexController;
 Route::inertia('/', 'Home');
 Route::inertia('/about', 'About');
 Route::inertia('/contact-us', 'ContactUs');
-//Route::post('/contact-us', 'contactForm');
+Route::post('/contact-us', [ContactController::class, 'contactForm']);
 
